@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Panvel brand greens */
+  --panvel-green: 149 100% 33%;
+  --panvel-green-dark: 149 100% 25%;
+  --panvel-green-light: 149 60% 95%;
+
+  --primary: 149 100% 33%;
+  --primary-foreground: 0 0% 100%;
+
+  --background: 0 0% 100%;
+  --foreground: 0 0% 15%;
+
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 45%;
+
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

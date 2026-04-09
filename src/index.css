@@ -3,22 +3,24 @@
 @tailwind utilities;
 
 :root {
-  /* Panvel brand greens */
-  --panvel-green: 149 100% 33%;
-  --panvel-green-dark: 149 100% 25%;
-  --panvel-green-light: 149 60% 95%;
-
-  --primary: 149 100% 33%;
+  /* Platform Hub - Dark theme inspired by Backstage/GitLab */
+  --primary: 210 100% 56%;
   --primary-foreground: 0 0% 100%;
 
-  --background: 0 0% 100%;
-  --foreground: 0 0% 15%;
+  --background: 222 47% 11%;
+  --foreground: 210 40% 98%;
 
-  --muted: 0 0% 96%;
-  --muted-foreground: 0 0% 45%;
+  --card: 222 47% 14%;
+  --card-foreground: 210 40% 98%;
 
-  --border: 0 0% 90%;
-  --input: 0 0% 90%;
+  --muted: 217 33% 17%;
+  --muted-foreground: 215 20% 65%;
+
+  --border: 217 33% 20%;
+  --input: 217 33% 20%;
+
+  --accent: 173 80% 40%;
+  --accent-foreground: 0 0% 100%;
 }
 
 * {
@@ -31,4 +33,6 @@ body {
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: hsl(222 47% 11%);
+  color: hsl(210 40% 98%);
 }

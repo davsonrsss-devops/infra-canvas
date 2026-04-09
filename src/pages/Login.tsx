@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Eye, EyeOff, ShieldCheck } from 'lucide-react'
+import { Eye, EyeOff, Terminal, Server, GitBranch } from 'lucide-react'
 
 export default function Login() {
   const [email, setEmail] = useState('')
@@ -14,39 +14,58 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen flex">
+    <div className="min-h-screen flex bg-background">
       {/* Left - Brand Panel */}
-      <div className="hidden lg:flex lg:w-1/2 bg-primary relative overflow-hidden flex-col items-center justify-center text-primary-foreground p-12">
-        {/* Decorative circles */}
-        <div className="absolute -top-20 -left-20 w-96 h-96 rounded-full bg-white/5" />
-        <div className="absolute -bottom-32 -right-32 w-[500px] h-[500px] rounded-full bg-white/5" />
-        <div className="absolute top-1/2 left-1/4 w-64 h-64 rounded-full bg-white/5" />
+      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden flex-col items-center justify-center p-12"
+        style={{ background: 'linear-gradient(135deg, hsl(222 47% 11%), hsl(210 100% 20%))' }}>
+        {/* Grid pattern */}
+        <div className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(210 100% 56%) 1px, transparent 0)',
+            backgroundSize: '32px 32px',
+          }}
+        />
+        {/* Glow */}
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full"
+          style={{ background: 'radial-gradient(circle, hsl(210 100% 56% / 0.15), transparent 70%)' }}
+        />
 
         <div className="relative z-10 text-center max-w-md">
-          <div className="flex items-center justify-center gap-3 mb-8">
-            <ShieldCheck className="w-12 h-12" />
-            <h1 className="text-4xl font-bold tracking-tight">Panvel</h1>
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="w-12 h-12 rounded-xl bg-primary/20 border border-primary/30 flex items-center justify-center">
+              <Terminal className="w-6 h-6 text-primary" />
+            </div>
+            <h1 className="text-3xl font-bold tracking-tight text-foreground">Platform Hub</h1>
           </div>
-          <p className="text-xl font-medium mb-4 text-white/90">
-            Farmácias
-          </p>
-          <p className="text-white/70 text-base leading-relaxed">
-            Acesse sua conta para gerenciar pedidos, acompanhar entregas e aproveitar ofertas exclusivas.
+          <p className="text-muted-foreground text-base leading-relaxed mb-10">
+            Portal interno de automação de infraestrutura, GitOps e padronização de ambientes.
           </p>
 
-          <div className="mt-12 grid grid-cols-3 gap-6 text-center">
-            <div>
-              <div className="text-3xl font-bold">500+</div>
-              <div className="text-sm text-white/60 mt-1">Lojas</div>
+          <div className="grid grid-cols-3 gap-6 text-center">
+            <div className="p-4 rounded-xl bg-card/50 border border-border/50">
+              <Server className="w-6 h-6 text-accent mx-auto mb-2" />
+              <div className="text-sm font-medium text-foreground">Infra</div>
+              <div className="text-xs text-muted-foreground mt-1">Terraform & Ansible</div>
             </div>
-            <div>
-              <div className="text-3xl font-bold">30k+</div>
-              <div className="text-sm text-white/60 mt-1">Produtos</div>
+            <div className="p-4 rounded-xl bg-card/50 border border-border/50">
+              <GitBranch className="w-6 h-6 text-accent mx-auto mb-2" />
+              <div className="text-sm font-medium text-foreground">GitOps</div>
+              <div className="text-xs text-muted-foreground mt-1">Source of Truth</div>
             </div>
-            <div>
-              <div className="text-3xl font-bold">5M+</div>
-              <div className="text-sm text-white/60 mt-1">Clientes</div>
+            <div className="p-4 rounded-xl bg-card/50 border border-border/50">
+              <Terminal className="w-6 h-6 text-accent mx-auto mb-2" />
+              <div className="text-sm font-medium text-foreground">Pipelines</div>
+              <div className="text-xs text-muted-foreground mt-1">CI/CD Automation</div>
             </div>
+          </div>
+
+          <div className="mt-10 p-4 rounded-xl bg-card/30 border border-border/30 text-left font-mono text-sm">
+            <div className="text-muted-foreground">
+              <span className="text-accent">$</span> platform deploy --env production
+            </div>
+            <div className="text-primary mt-1">✓ Infrastructure provisioned</div>
+            <div className="text-primary">✓ Services configured</div>
+            <div className="text-accent">→ Ready in 2m 34s</div>
           </div>
         </div>
       </div>
@@ -56,13 +75,15 @@ export default function Login() {
         <div className="w-full max-w-md">
           {/* Mobile logo */}
           <div className="lg:hidden flex items-center gap-2 mb-8 justify-center">
-            <ShieldCheck className="w-8 h-8 text-primary" />
-            <span className="text-2xl font-bold text-foreground">Panvel</span>
+            <div className="w-9 h-9 rounded-lg bg-primary/20 border border-primary/30 flex items-center justify-center">
+              <Terminal className="w-5 h-5 text-primary" />
+            </div>
+            <span className="text-xl font-bold text-foreground">Platform Hub</span>
           </div>
 
           <div className="mb-8">
             <h2 className="text-2xl font-bold text-foreground">Bem-vindo de volta</h2>
-            <p className="text-muted-foreground mt-2">Entre com seus dados para acessar sua conta</p>
+            <p className="text-muted-foreground mt-2">Entre com suas credenciais para acessar o portal</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-5">
@@ -76,8 +97,8 @@ export default function Login() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="seu@email.com"
-                className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all"
+                placeholder="usuario@empresa.com"
+                className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all"
               />
             </div>
 
@@ -93,7 +114,7 @@ export default function Login() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all pr-12"
+                  className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all pr-12"
                 />
                 <button
                   type="button"
@@ -107,7 +128,7 @@ export default function Login() {
 
             <div className="flex items-center justify-between">
               <label className="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" className="w-4 h-4 rounded accent-panvel-green" />
+                <input type="checkbox" className="w-4 h-4 rounded accent-primary" />
                 <span className="text-sm text-muted-foreground">Lembrar de mim</span>
               </label>
               <a href="#" className="text-sm font-medium text-primary hover:underline">
@@ -118,7 +139,7 @@ export default function Login() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 px-4 rounded-lg bg-primary text-primary-foreground font-semibold text-base hover:bg-panvel-green-dark transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+              className="w-full py-3 px-4 rounded-lg bg-primary text-primary-foreground font-semibold text-base hover:brightness-110 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {loading ? (
                 <span className="flex items-center justify-center gap-2">
@@ -132,17 +153,27 @@ export default function Login() {
                 'Entrar'
               )}
             </button>
+
+            <div className="relative my-6">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-border" />
+              </div>
+              <div className="relative flex justify-center text-xs uppercase">
+                <span className="bg-background px-2 text-muted-foreground">ou continue com</span>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              className="w-full py-3 px-4 rounded-lg border border-border bg-card text-foreground font-medium hover:bg-muted transition-colors flex items-center justify-center gap-2"
+            >
+              <GitBranch className="w-5 h-5" />
+              SSO Corporativo
+            </button>
           </form>
 
-          <p className="mt-8 text-center text-sm text-muted-foreground">
-            Não tem uma conta?{' '}
-            <a href="#" className="font-semibold text-primary hover:underline">
-              Cadastre-se
-            </a>
-          </p>
-
-          <p className="mt-6 text-center text-xs text-muted-foreground/60">
-            © {new Date().getFullYear()} Panvel Farmácias. Todos os direitos reservados.
+          <p className="mt-8 text-center text-xs text-muted-foreground/60">
+            Platform Hub v2.0 — Internal DevOps Portal
           </p>
         </div>
       </div>
